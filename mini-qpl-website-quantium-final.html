@@ -1,0 +1,2335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini QPL 2025 - Quantium Theme</title>
+    <style>
+        :root {
+            --primary: #00A3E0; /* Quantium blue */
+            --secondary: #004B87; /* Darker blue */
+            --accent: #FFB81C; /* Gold accent */
+            --dark: #333333;
+            --light: #F5F5F5;
+            --white: #FFFFFF;
+            --gray: #EEEEEE;
+            --gradient-blue: linear-gradient(135deg, #00A3E0, #004B87);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./images/Inaguration.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .logo {
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+        
+        .logo img {
+            height: 60px;
+        }
+        
+        .hero-countdown {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            margin-top: 2rem;
+            display: inline-block;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero-countdown span {
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        nav {
+            background-color: var(--white);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0;
+        }
+        
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 1.5rem 1.2rem;
+            display: inline-block;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+        
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+        
+        nav a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary);
+            position: relative;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: -2rem auto 3rem;
+            color: #666;
+        }
+        
+        .games-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .game-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .game-image {
+            height: 180px;
+            background: var(--gradient-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .game-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .game-card:hover .game-image img {
+            transform: scale(1.05);
+        }
+        
+        .game-details {
+            padding: 1.8rem;
+        }
+        
+        .game-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .game-type {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .indoor {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .outdoor {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+        
+        .game-date {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+        
+        .game-date i {
+            margin-right: 8px;
+            color: var(--primary);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background-color: var(--secondary);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .week-row {
+            background-color: rgba(0, 163, 224, 0.08);
+            font-weight: bold;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 1.5rem;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #E5A619;
+        }
+        
+        .points-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .points-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .points-card h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .points-list {
+            list-style: none;
+        }
+        
+        .points-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .points-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .highlight-box {
+            background-color: rgba(0, 163, 224, 0.05);
+            border-left: 4px solid var(--primary);
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .principles-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .principle-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .principle-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .principle-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .principle-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-size: 1.3rem;
+        }
+        
+        .news-section {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .news-item {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .news-date {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            padding: 3px 10px;
+            background-color: var(--gray);
+            border-radius: 50px;
+        }
+        
+        .news-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            cursor: pointer;
+            position: relative;
+            aspect-ratio: 4/3;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .leaderboard {
+            background-color: white;
+            border-radius: 8px;
+            padding: 3rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 3rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .leaderboard-table {
+            margin-top: 2rem;
+        }
+        
+        .leaderboard-position {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .team-status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-leading {
+            background-color: #D4EDDA;
+            color: #155724;
+        }
+        
+        .status-contending {
+            background-color: #D1ECF1;
+            color: #0C5460;
+        }
+        
+        .status-hunting {
+            background-color: #FFF3CD;
+            color: #856404;
+        }
+        
+        .status-tied {
+            background-color: #F8D7DA;
+            color: #721C24;
+        }
+        
+        .chart-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            margin-top: 3rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        footer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 4rem 0 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./images/Inaguration.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .footer-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-logo {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo img {
+            height: 60px;
+            filter: brightness(0) invert(1);
+            opacity: 1;
+        }
+        
+        .footer-content p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .social-links {
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: color 0.3s;
+            opacity: 0.8;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            opacity: 1;
+        }
+        
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                <div class="chart-container" style="margin-top: 3rem; margin-bottom: 3rem;">
+                    <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Team Performance Progression</h3>
+                    <canvas id="team-progression-chart" height="350"></canvas>
+                </div>
+                font-size: 2.2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav a {
+                padding: 1rem;
+                display: block;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .games-container, 
+            .principles-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .game-image {
+                height: 160px; /* Slightly smaller on mobile */
+            }
+            
+            .game-image img {
+                object-position: center; /* Ensure it's centered on smaller screens */
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 0.8rem;
+            }
+            
+            .news-section,
+            .leaderboard {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* For larger screens, ensure optimal image display */
+        @media (min-width: 1200px) {
+            .game-image {
+                height: 200px; /* Taller on desktop */
+            }
+        }
+        
+        /* TEAM SECTION STYLES */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .team-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            position: relative;
+            padding: 15px 10px;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .team-impact .captain-img-border {
+            border: 4px solid #00A3E0;
+        }
+        
+        .team-balance .captain-img-border {
+            border: 4px solid #004B87;
+        }
+        
+        .team-superpowers .captain-img-border {
+            border: 4px solid #FFB81C;
+        }
+        
+        .team-remarkable .captain-img-border {
+            border: 4px solid #673AB7;
+        }
+        
+        .team-speed .captain-img-border {
+            border: 4px solid #E91E63;
+        }
+        
+        .captain-img-border {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            padding: 5px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .captain-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        
+        .team-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .captain-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .captain-title {
+            color: #777;
+            font-size: 0.85rem;
+            margin-bottom: 0;
+        }
+        
+        .team-score {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+        
+        .team-position {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .team-impact .team-score {
+            color: #00A3E0;
+        }
+        
+        .team-balance .team-score {
+            color: #004B87;
+        }
+        
+        .team-superpowers .team-score {
+            color: #FFB81C;
+        }
+        
+        .team-remarkable .team-score {
+            color: #673AB7;
+        }
+        
+        .team-speed .team-score {
+            color: #E91E63;
+        }
+        
+
+        
+        @media (max-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Game details modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 30px;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .close:hover {
+            color: var(--dark);
+            background: #eee;
+        }
+        
+        .modal-header {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-title {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-right: 40px;
+        }
+        
+        .game-subtitle {
+            color: #777;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            font-weight: normal;
+        }
+        
+        .game-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 15px;
+        }
+        
+        .rule-section {
+            margin-bottom: 25px;
+        }
+        
+        .rule-section h3 {
+            color: var(--dark);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .rule-section ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .rule-section ul li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .rule-highlight {
+            background-color: rgba(0, 163, 224, 0.05);
+            border-left: 3px solid var(--primary);
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+                margin: 10% auto;
+                max-height: 80vh;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="./images/Q-icon.png" alt="Quantium Logo" style="height: 60px;" />
+            </div>
+            <h1>Mini QPL 2025</h1>
+            <p>10 action-packed games building bonds and creating unforgettable memories</p>
+            <div class="hero-countdown">
+                Next Event: <span id="nextEventName">Carroms</span> on <span id="nextEventDate">March 26th</span>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#teams">Teams</a></li>
+                <li><a href="#leaderboard">Leaderboard</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#points">Points System</a></li>
+                <li><a href="#fair-play">Fair Play</a></li>
+                <li><a href="#news">News</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">The Mini QPL Experience</h2>
+            <p class="section-subtitle">Strengthening our organization through competition, collaboration, and camaraderie</p>
+            
+            <div class="highlight-box">
+                <h3><i class="fas fa-info-circle"></i> New to these games?</h3>
+                <p>Don't worry! Mini QPL is about trying something new, having fun, and building connections—not about being an expert. Team captains will ensure everyone feels welcome and included, regardless of experience level. We invite all team members to join in—Mini QPL is designed for everyone!</p>
+            </div>
+            
+            <div class="principles-list">
+                <div class="principle-card">
+                    <i class="fas fa-battery-three-quarters"></i>
+                    <h3>Refreshing Break</h3>
+                    <p>Mini QPL provides a welcome break from our daily routines, helping us recharge and return to work with renewed energy.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Wellness Focus</h3>
+                    <p>Promotes physical and mental wellness through diverse activities that engage different skills and abilities.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Building Connections</h3>
+                    <p>Creates meaningful relationships across teams and departments that extend beyond the competition.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Inclusive Participation</h3>
+                    <p>Provides opportunities for everyone to participate and contribute regardless of skill level or experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="games">
+        <div class="container">
+            <h2 class="section-title">Our Exciting Games</h2>
+            <p class="section-subtitle">From strategic indoor competitions to energetic outdoor sports, there's something for everyone</p>
+            
+            <div class="games-container">
+                <!-- Carrom with Carrom_Winning.jpg as requested -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="./images/Carrom_Winning.jpg" alt="Carrom Game">
+                    </div>
+                    <div class="game-details">
+                        <h3 class="game-title">Carroms</h3>
+                        <span class="game-type indoor">Indoor</span>
+                        <div class="game-date">
+                            <i class="far fa-calendar-alt"></i>
+                            March 26th (Wednesday)
+                        </div>
+                        <p>A classic tabletop game requiring precision and strategy.</p>
+                        <a href="#" class="btn game-details-btn" data-game="carrom" style="width: 100%;">Game Details</a>
+                    </div>
+                </div>
+                
+                <!-- Cricket -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="./images/Cricket_winning.png" alt="Cricket Game">
+                    </div>
+                    <div class="game-details">
+                        <h3 class="game-title">Cricket</h3>
+                        <span class="game-type outdoor">Outdoor</span>
+                        <div class="game-date">
+                            <i class="far fa-calendar-alt"></i>
+                            March 27th (Thursday)
+                        </div>
+                        <p>A beloved team sport that tests coordination and teamwork.</p>
+                        <a href="#" class="btn game-details-btn" data-game="cricket" style="width: 100%;">Game Details</a>
+                    </div>
+                </div>
+                
+                <!-- Pool -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="./images/Pool_Winning.jpg" alt="Pool Game">
+                    </div>
+                    <div class="game-details">
+                        <h3 class="game-title">Pool</h3>
+                        <span class="game-type indoor">Indoor</span>
+                        <div class="game-date">
+                            <i class="far fa-calendar-alt"></i>
+                            April 2nd (Wednesday)
+                        </div>
+                        <p>A game of precision, strategy, and steady hands.</p>
+                        <a href="#" class="btn game-details-btn" data-game="pool" style="width: 100%;">Game Details</a>
+                    </div>
+                </div>
+                
+                <!-- Chess -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="./images/Chess_1.png" alt="Chess Game">
+                    </div>
+                    <div class="game-details">
+                        <h3 class="game-title">Chess</h3>
+                        <span class="game-type indoor">Indoor</span>
+                        <div class="game-date">
+                            <i class="far fa-calendar-alt"></i>
+                            April 16th (Wednesday)
+                        </div>
+                        <p>The ultimate battle of minds requiring strategic thinking and foresight.</p>
+                        <a href="#" class="btn game-details-btn" data-game="chess" style="width: 100%;">Game Details</a>
+                    </div>
+                </div>
+                
+                <!-- UNO -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="./images/UNO.png" alt="UNO Game">
+                    </div>
+                    <div class="game-details">
+                        <h3 class="game-title">UNO</h3>
+                        <span class="game-type indoor">Indoor</span>
+                        <div class="game-date">
+                            <i class="far fa-calendar-alt"></i>
+                            April 15th (Tuesday)
+                        </div>
+                        <p>Fast-paced card game of matching colors and numbers that's fun for everyone.</p>
+                        <a href="#" class="btn game-details-btn" data-game="uno" style="width: 100%;">Game Details</a>
+                    </div>
+                </div>
+                
+                <!-- Volleyball -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="./images/VolleyBall_1.jpg" alt="Volleyball Game">
+                    </div>
+                    <div class="game-details">
+                        <h3 class="game-title">Volleyball</h3>
+                        <span class="game-type outdoor">Outdoor</span>
+                        <div class="game-date">
+                            <i class="far fa-calendar-alt"></i>
+                            April 10th (Thursday)
+                        </div>
+                        <p>Exciting team sport that combines agility, coordination, and teamwork.</p>
+                        <a href="#" class="btn game-details-btn" data-game="volleyball" style="width: 100%;">Game Details</a>
+                    </div>
+                </div>
+                
+                <!-- Badminton -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="./images/Badminton_1.png" alt="Badminton Game">
+                    </div>
+                    <div class="game-details">
+                        <h3 class="game-title">Badminton</h3>
+                        <span class="game-type outdoor">Outdoor</span>
+                        <div class="game-date">
+                            <i class="far fa-calendar-alt"></i>
+                            April 17th (Thursday)
+                        </div>
+                        <p>Fast-paced racquet sport that tests reflexes and agility.</p>
+                        <a href="#" class="btn game-details-btn" data-game="badminton" style="width: 100%;">Game Details</a>
+                    </div>
+                </div>
+                
+                <!-- Table Tennis -->
+                <div class="game-card">
+                    <div class="game-image" style="background: linear-gradient(135deg, #2196F3, #0D47A1);">
+                        <i class="fas fa-table-tennis" style="font-size: 4rem;"></i>
+                    </div>
+                    <div class="game-details">
+                        <h3 class="game-title">Table Tennis</h3>
+                        <span class="game-type indoor">Indoor</span>
+                        <div class="game-date">
+                            <i class="far fa-calendar-alt"></i>
+                            April 8th (Tuesday)
+                        </div>
+                        <p>Lightning-quick reflexes and precision are key in this exciting indoor sport.</p>
+                        <a href="#" class="btn game-details-btn" data-game="tabletennis" style="width: 100%;">Game Details</a>
+                    </div>
+                </div>
+                
+                <!-- Football (completed) -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="./images/Football_winning.jpg" alt="Football Game">
+                    </div>
+                    <div class="game-details">
+                        <h3 class="game-title">Football</h3>
+                        <span class="game-type outdoor">Outdoor</span>
+                        <div class="game-date">
+                            <i class="far fa-calendar-alt"></i>
+                            April 22nd (Completed)
+                        </div>
+                        <p>The beautiful game that combines athleticism and team strategy.</p>
+                        <a href="#" class="btn game-details-btn" data-game="football" style="width: 100%;">Game Details</a>
+                    </div>
+                </div>
+                
+                <!-- Pickleball -->
+                <div class="game-card">
+                    <div class="game-image" style="background: linear-gradient(135deg, #FF9800, #FF5722);">
+                        <i class="fas fa-table-tennis" style="font-size: 4rem;"></i>
+                    </div>
+                    <div class="game-details">
+                        <h3 class="game-title">Pickleball</h3>
+                        <span class="game-type outdoor">Outdoor</span>
+                        <div class="game-date">
+                            <i class="far fa-calendar-alt"></i>
+                            April 29th (Tuesday)
+                        </div>
+                        <p>Our exciting new addition combining elements of tennis, badminton, and ping-pong!</p>
+                        <a href="#" class="btn game-details-btn" data-game="pickleball" style="width: 100%;">Game Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="schedule">
+        <div class="container">
+            <h2 class="section-title">Event Schedule</h2>
+            <p class="section-subtitle">Events are scheduled on Tuesdays, Wednesdays, and Thursdays to ensure maximum availability</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Week</th>
+                        <th>Type</th>
+                        <th>Sport</th>
+                        <th>Date</th>
+                        <th>Day</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="week-row">
+                        <td colspan="5">WEEK 1</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Indoor</td>
+                        <td>Carroms</td>
+                        <td>March 26th</td>
+                        <td>Wednesday</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Outdoor</td>
+                        <td>Cricket</td>
+                        <td>March 27th</td>
+                        <td>Thursday</td>
+                    </tr>
+                    
+                    <tr class="week-row">
+                        <td colspan="5">WEEK 2</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Indoor</td>
+                        <td>Pool</td>
+                        <td>April 2nd</td>
+                        <td>Wednesday</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Outdoor</td>
+                        <td>Pickleball</td>
+                        <td>April 29th</td>
+                        <td>Tuesday</td>
+                    </tr>
+                    
+                    <tr class="week-row">
+                        <td colspan="5">WEEK 3</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Indoor</td>
+                        <td>Table Tennis</td>
+                        <td>April 8th</td>
+                        <td>Tuesday</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Outdoor</td>
+                        <td>Volleyball</td>
+                        <td>April 10th</td>
+                        <td>Thursday</td>
+                    </tr>
+                    
+                    <tr class="week-row">
+                        <td colspan="5">WEEK 4</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Indoor</td>
+                        <td>UNO</td>
+                        <td>April 15th</td>
+                        <td>Tuesday</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Outdoor</td>
+                        <td>Badminton</td>
+                        <td>April 17th</td>
+                        <td>Thursday</td>
+                    </tr>
+                    
+                    <tr class="week-row">
+                        <td colspan="5">WEEK 5</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Outdoor</td>
+                        <td>Football</td>
+                        <td>April 22nd</td>
+                        <td>Tuesday</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Indoor</td>
+                        <td>Chess</td>
+                        <td>April 16th</td>
+                        <td>Wednesday</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="text-center">
+                <a href="#" class="btn">Download Schedule</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="teams">
+        <div class="container">
+            <h2 class="section-title">Our Teams</h2>
+            <p class="section-subtitle">Five exceptional teams competing for glory in Mini QPL 2025</p>
+            
+            <div class="team-grid">
+                <!-- Team Impact -->
+                <div class="team-card team-impact">
+                    <div class="captain-img-border">
+                        <img src="./images/Komal.png" alt="Komal" class="captain-img" style="object-position: center;">
+                    </div>
+                    <h3 class="team-name">Team Impact</h3>
+                    <p class="captain-name">Komal</p>
+                    <p class="captain-title">Team Captain</p>
+                </div>
+                
+                <!-- Team Balance -->
+                <div class="team-card team-balance">
+                    <div class="captain-img-border">
+                        <img src="./images/Vishal Mate.png" alt="Vishal Mate" class="captain-img">
+                    </div>
+                    <h3 class="team-name">Team Balance</h3>
+                    <p class="captain-name">Vishal Mate</p>
+                    <p class="captain-title">Team Captain</p>
+                </div>
+                
+                <!-- Team Superpowers -->
+                <div class="team-card team-superpowers">
+                    <div class="captain-img-border">
+                        <img src="./images/Sai Raghuram.png" alt="Sai Raghuram" class="captain-img">
+                    </div>
+                    <h3 class="team-name">Team Superpowers</h3>
+                    <p class="captain-name">Sai Raghuram</p>
+                    <p class="captain-title">Team Captain</p>
+                </div>
+                
+                <!-- Team Remarkable -->
+                <div class="team-card team-remarkable">
+                    <div class="captain-img-border">
+                        <img src="./images/Teerth Deepkumar.png" alt="Teerth Deepkumar" class="captain-img" style="object-position: center;">
+                    </div>
+                    <h3 class="team-name">Team Remarkable</h3>
+                    <p class="captain-name">Teerth Deepkumar</p>
+                    <p class="captain-title">Team Captain</p>
+                </div>
+                
+                <!-- Team Speed -->
+                <div class="team-card team-speed">
+                    <div class="captain-img-border">
+                        <img src="./images/Dheeraj Jadhav.png" alt="Dheeraj Jadhav" class="captain-img">
+                    </div>
+                    <h3 class="team-name">Team Speed</h3>
+                    <p class="captain-name">Dheeraj Jadhav</p>
+                    <p class="captain-title">Team Captain</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box" style="margin-top: 50px;">
+                <h3><i class="fas fa-users"></i> Team Spirit</h3>
+                <p>Our five teams bring together diverse talents and skills from across the organization. Each team is led by a dedicated captain who ensures everyone gets a chance to participate and have fun while competing to the best of their abilities. The friendly competition between teams is what makes Mini QPL special!</p>
+            </div>
+            
+            <div class="text-center">
+                <a href="#leaderboard" class="btn">View Current Standings</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="leaderboard">
+        <div class="container">
+            <h2 class="section-title">Current Standings</h2>
+            <p class="section-subtitle">Track team performances and watch the competition unfold</p>
+            
+            <div class="leaderboard">
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Team</th>
+                            <th>Total Points</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="leaderboard-position">1</span></td>
+                            <td>Team Impact</td>
+                            <td>340</td>
+                            <td><span class="team-status status-leading">Leading</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="leaderboard-position">2</span></td>
+                            <td>Team Remarkable</td>
+                            <td>280</td>
+                            <td><span class="team-status status-contending">Contending</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="leaderboard-position">3</span></td>
+                            <td>Team Superpowers</td>
+                            <td>270</td>
+                            <td><span class="team-status status-hunting">In the Hunt</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="leaderboard-position">4</span></td>
+                            <td>Team Speed</td>
+                            <td>240</td>
+                            <td><span class="team-status status-hunting">In the Hunt</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="leaderboard-position">5</span></td>
+                            <td>Team Balance</td>
+                            <td>220</td>
+                            <td><span class="team-status status-hunting">In the Hunt</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                    <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Detailed Team Performance by Game</h3>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Game</th>
+                                <th>Team Superpowers</th>
+                                <th>Team Impact</th>
+                                <th>Team Balance</th>
+                                <th>Team Speed</th>
+                                <th>Team Remarkable</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Carroms</td>
+                                <td>10</td>
+                                <td>50</td>
+                                <td>20</td>
+                                <td>40</td>
+                                <td>30</td>
+                            </tr>
+                            <tr>
+                                <td>Cricket</td>
+                                <td>40</td>
+                                <td>50</td>
+                                <td>10</td>
+                                <td>30</td>
+                                <td>20</td>
+                            </tr>
+                            <tr>
+                                <td>Chess</td>
+                                <td>50</td>
+                                <td>30</td>
+                                <td>40</td>
+                                <td>10</td>
+                                <td>20</td>
+                            </tr>
+                            <tr>
+                                <td>Table Tennis</td>
+                                <td>10</td>
+                                <td>50</td>
+                                <td>30</td>
+                                <td>20</td>
+                                <td>40</td>
+                            </tr>
+                            <tr>
+                                <td>UNO</td>
+                                <td>20</td>
+                                <td>50</td>
+                                <td>10</td>
+                                <td>30</td>
+                                <td>40</td>
+                            </tr>
+                            <tr>
+                                <td>Badminton</td>
+                                <td>10</td>
+                                <td>50</td>
+                                <td>30</td>
+                                <td>20</td>
+                                <td>40</td>
+                            </tr>
+                            <tr>
+                                <td>Pickle Ball</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Volleyball</td>
+                                <td>30</td>
+                                <td>10</td>
+                                <td>20</td>
+                                <td>40</td>
+                                <td>50</td>
+                            </tr>
+                            <tr>
+                                <td>Football</td>
+                                <td>50</td>
+                                <td>30</td>
+                                <td>20</td>
+                                <td>40</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td>Pool</td>
+                                <td>0</td>
+                                <td>20</td>
+                                <td>40</td>
+                                <td>10</td>
+                                <td>30</td>
+                            </tr>
+                            <tr style="font-weight: bold; background-color: rgba(0, 163, 224, 0.1);">
+                                <td>Total QPL Points</td>
+                                <td>270</td>
+                                <td>340</td>
+                                <td>220</td>
+                                <td>240</td>
+                                <td>280</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title">Event Gallery</h2>
+            <p class="section-subtitle">Capturing the excitement, determination, and team spirit of Mini QPL 2025</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="./images/Pool_Winning.jpg" alt="Pool Tournament Group" />
+                    <div class="gallery-caption">
+                        <h3>Pool Tournament</h3>
+                        <p>Team members gathered around the pool table, showcasing their skills.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="./images/VolleyBall_1.jpg" alt="Volleyball Match Evening" />
+                    <div class="gallery-caption">
+                        <h3>Volleyball Action</h3>
+                        <p>Teams battling it out under the lights in an exciting match.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="./images/VolleyBall_2.jpg" alt="Volleyball Players" />
+                    <div class="gallery-caption">
+                        <h3>Volleyball Strategy</h3>
+                        <p>Players positioned strategically during an intense rally.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="./images/Chess_1.png" alt="Chess Tournament" />
+                    <div class="gallery-caption">
+                        <h3>Chess Champions</h3>
+                        <p>Our chess champions celebrating their nail-biting comeback victory.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="./images/Carrom_Winning.jpg" alt="Carroms Event" />
+                    <div class="gallery-caption">
+                        <h3>Carroms Competition</h3>
+                        <p>Precision and focus on display during the Carroms event.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="./images/Football_winning.jpg" alt="Football Tournament Winners" />
+                    <div class="gallery-caption">
+                        <h3>Football Champions</h3>
+                        <p>Team Superpowers celebrating their championship victory in football.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="points">
+        <div class="container">
+            <h2 class="section-title">Points System</h2>
+            <p class="section-subtitle">Every point counts in the race to become Mini QPL Champions</p>
+            
+            <div class="points-card">
+                <h3>Points Allocation</h3>
+                <ul class="points-list">
+                    <li>
+                        <span>1st Place</span>
+                        <span>50 points</span>
+                    </li>
+                    <li>
+                        <span>2nd Place</span>
+                        <span>40 points</span>
+                    </li>
+                    <li>
+                        <span>3rd Place</span>
+                        <span>30 points</span>
+                    </li>
+                    <li>
+                        <span>4th Place</span>
+                        <span>20 points</span>
+                    </li>
+                    <li>
+                        <span>5th Place</span>
+                        <span>10 points</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <p>We'll aggregate points from all 10 games to determine our champion. In case of a tie, fair play points will be considered as the tiebreaker. The highest-scoring team becomes our Mini QPL Champion!</p>
+            
+            <div class="highlight-box">
+                <h3><i class="fas fa-trophy"></i> Champion Determination</h3>
+                <p>Points are cumulative across all events. Teams should strive for consistency across all games rather than focusing solely on their strongest events. Remember that fair play can make the difference in a close competition!</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="fair-play">
+        <div class="container">
+            <h2 class="section-title">The Spirit of Fair Play</h2>
+            <p class="section-subtitle">How you play matters more than whether you win</p>
+            
+            <p>At the heart of Mini QPL lies the principle of fair play. This year, we're challenging the notion that fair play and competitive success are mutually exclusive. We want to see teams that can win both the trophy and the fair play award, proving that positive sportsmanship and excellence can go hand in hand.</p>
+            
+            <div class="principles-list">
+                <div class="principle-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Respect</h3>
+                    <p>Respect opponents, teammates, and officials always</p>
+                </div>
+                
+                <div class="principle-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Humility</h3>
+                    <p>Celebrate victories with humility and acknowledge everyone's efforts</p>
+                </div>
+                
+                <div class="principle-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Grace</h3>
+                    <p>Accept defeats gracefully, focusing on lessons learned</p>
+                </div>
+                
+                <div class="principle-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Support</h3>
+                    <p>Support and encourage less experienced players</p>
+                </div>
+                
+                <div class="principle-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Energy</h3>
+                    <p>Maintain positive energy throughout all events</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3><i class="fas fa-star"></i> Remember</h3>
+                <p>As we prepare for Mini QPL, remember that while trophies gather dust, the relationships and wellbeing benefits we cultivate will continue to enrich our professional and personal lives long after the final whistle.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="news">
+        <div class="container">
+            <h2 class="section-title">Latest Updates</h2>
+            <p class="section-subtitle">Catch up on all the Mini QPL action and news</p>
+            
+            <div class="news-section">
+                <!-- Football Results News Item -->
+                <div class="news-item">
+                    <div class="news-date">April 23, 2025</div>
+                    <h3 class="news-title">Football Results: Superpowers Claim Championship Victory!</h3>
+                    <p>The Football competition delivered intense matches and showcased exceptional teamwork from all sides! Team Superpowers emerged victorious in the final match against Team Speed, claiming the championship in style.</p>
+                    
+                    <div style="display: flex; justify-content: center; margin: 20px 0;">
+                        <img src="./images/Football_winning.jpg" alt="Football Tournament Champions" style="max-width: 100%; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);" />
+                    </div>
+                    
+                    <div class="match-results" style="background-color: #f0f9f0; border-left: 4px solid #4CAF50;">
+                        <h4><i class="fas fa-futbol"></i> Match Results</h4>
+                        <ul>
+                            <li><strong>Qualifier:</strong> Speed defeated Remarkable, displaying excellent coordination.</li>
+                            <li><strong>Semifinal 1:</strong> Speed defeated Balance.</li>
+                            <li><strong>Semifinal 2:</strong> Superpowers defeated Impact.</li>
+                            <li><strong>Final:</strong> Superpowers defeated Speed to claim the victory.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="standings" style="background-color: #f0f9f0; border-left: 4px solid #4CAF50;">
+                        <h4><i class="fas fa-trophy"></i> Standings</h4>
+                        <ul>
+                            <li><strong>Superpowers</strong> – Winners (50 points)</li>
+                            <li><strong>Speed</strong> – Runners-up (40 points)</li>
+                            <li><strong>Impact</strong> – Secured 3rd position (30 points)</li>
+                            <li><strong>Balance</strong> – Finished 4th (20 points)</li>
+                            <li><strong>Remarkable</strong> – 5th position (10 points)</li>
+                        </ul>
+                    </div>
+                    
+                    <p>Thank you to all participants for their sportsmanship and competitive spirit. Every match demonstrated teamwork and skill that made the tournament truly memorable.</p>
+                    
+                    <div class="highlighted-note">
+                        <p><strong>Up Next:</strong> Stay tuned for the last game in this Mini QPL - Pickleball next week! Let's come together to end this exciting Mini QPL 2025 series with smiles, celebration, and one final display of friendly competition!</p>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <a href="#" class="btn">View Football Tournament Gallery</a>
+                    </div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="news-date">April 18, 2025</div>
+                    <h3 class="news-title">Mini QPL Reaches Halfway Point with Exciting Pool and Volleyball Tournaments!</h3>
+                    <p>With 5 games completed and 5 more remaining, we've reached the halfway point of this exciting tournament. The intense matches in both Pool and Volleyball have given spectators plenty to cheer about!</p>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 20px 0;">
+                        <div style="flex: 1; min-width: 300px;">
+                            <img src="./images/Pool_Winning.jpg" alt="Pool Tournament Players" style="width: 100%; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);" />
+                            <p style="font-style: italic; margin-top: 10px; text-align: center; font-size: 0.9rem; color: #666;">Team members gathered around the pool table during the tournament</p>
+                        </div>
+                        <div style="flex: 1; min-width: 300px;">
+                            <img src="./images/VolleyBall_1.jpg" alt="Volleyball Match in Progress" style="width: 100%; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);" />
+                            <p style="font-style: italic; margin-top: 10px; text-align: center; font-size: 0.9rem; color: #666;">Volleyball action under the lights</p>
+                        </div>
+                    </div>
+                    
+                    <h4 style="color: var(--primary); margin-top: 20px;">Pool Tournament Results</h4>
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <li style="margin-bottom: 10px;"><strong>1. Superpowers - Winners</strong><br>Lazim K, Krishna Kanth, Naresh Bommali, Sai Sriyam Addepalli and Uttam Kumar Reddy Anumula delivered standout performances</li>
+                        <li style="margin-bottom: 10px;"><strong>2. Balance - Runners-up</strong><br>Everyone showed excellent cue control in crucial moments</li>
+                        <li style="margin-bottom: 10px;"><strong>3. Remarkable - Third Place</strong><br>Displayed impressive tactical awareness</li>
+                        <li style="margin-bottom: 10px;"><strong>4. Impact - Fourth Place</strong><br>Secured a notable victory in the qualifier round</li>
+                        <li style="margin-bottom: 10px;"><strong>5. Speed - Fifth Place</strong><br>Competed with determination despite early elimination</li>
+                    </ul>
+                    
+                    <div style="margin-top: 20px;">
+                        <a href="#" class="btn">Read Full Pool Tournament Report</a>
+                    </div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="news-date">April 18, 2025</div>
+                    <h3 class="news-title">Chess Champions Crowned After Nail-Biting Finals!</h3>
+                    <p>Congratulations to our chess team - Vineeth, Shasank, Raghu, Vinay, and Viswas - for their spectacular comeback victory! After losing the first two matches in the finals, the team showed incredible resilience. Vinay's crucial win against the previously undefeated Naresh turned the tide, followed by Shasank's victory over Sateesh. The grand finale came down to seconds with Viswas's intense and thrilling win!</p>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 20px 0;">
+                        <div style="flex: 1; min-width: 300px;">
+                            <img src="./images/Chess_1.png" alt="Chess Tournament" style="width: 100%; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);" />
+                            <p style="font-style: italic; margin-top: 10px; text-align: center; font-size: 0.9rem; color: #666;">Chess tournament in progress</p>
+                        </div>
+                        <div style="flex: 1; min-width: 300px;">
+                            <img src="./images/Chess_2.png" alt="Chess Champions" style="width: 100%; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);" />
+                            <p style="font-style: italic; margin-top: 10px; text-align: center; font-size: 0.9rem; color: #666;">Our chess champions celebrating their victory</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <a href="#" class="btn">Read Full Chess Tournament Report</a>
+                    </div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="news-date">March 26, 2025</div>
+                    <h3 class="news-title">Mini QPL 2025 Inaugurated with a Ceremonial Carrom Shot</h3>
+                    <p>The Mini QPL 2025 was officially inaugurated on March 26th by <strong>Ravi Kanniganti</strong>. The inaugural carrom shot was performed by our new office couple, Lokesh and Parul, marking the beginning of what promises to be an exciting tournament series.</p>
+                    
+                    <div style="display: flex; justify-content: center; margin: 20px 0;">
+                        <img src="./images/Carrom_Inag.jpg" alt="Inauguration Ceremony" style="max-width: 100%; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);" />
+                    </div>
+                    
+                    <p>The inauguration ceremony set the tone for the Mini QPL 2025, highlighting the values of sportsmanship, teamwork, and friendly competition that will guide the events. Teams are eager to showcase their talents across the 10 diverse games scheduled throughout the coming weeks.</p>
+                    
+                    <div style="margin-top: 20px;">
+                        <a href="#games" class="btn">View Tournament Schedule</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Game Details Modals -->
+    <div id="carromModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title"><span class="game-icon"><i class="fas fa-bullseye"></i></span>Carrom - Official Rules</h2>
+                <p class="game-subtitle">A classic tabletop game requiring precision and strategy</p>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-play-circle" style="margin-right: 10px; color: var(--primary);"></i>Starting the Game</h3>
+                <ul>
+                    <li>Winner of coin toss chooses to strike first OR select preferred board side</li>
+                    <li>First player gets three attempts to execute valid break</li>
+                    <li>Valid break requires striking central coin AND moving multiple coins/pocketing one</li>
+                </ul>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-list-ul" style="margin-right: 10px; color: var(--primary);"></i>Basic Rules</h3>
+                <ul>
+                    <li>Players pocket only their assigned color coins</li>
+                    <li>Pocketing a coin earns one additional turn</li>
+                    <li>Strike using only fingers/knuckles</li>
+                    <li>Striker must be within baseline and quarter circle</li>
+                </ul>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-crown" style="margin-right: 10px; color: var(--primary);"></i>Queen Rules</h3>
+                <ul>
+                    <li>Must cover Queen (pocket Queen then pocket your color in next shot)</li>
+                    <li>Queen worth 3 points when covered</li>
+                    <li>Must pocket and cover Queen before your last coin</li>
+                    <li>Cannot attempt Queen until pocketing at least one of your coins</li>
+                </ul>
+            </div>
+            <div class="rule-highlight">
+                <p><strong>Match Format:</strong> 5 games (2 men's singles, 1 women's singles, 1 mixed doubles, 1 men's doubles)</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="cricketModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title"><span class="game-icon"><i class="fas fa-baseball-ball"></i></span>Cricket - Official Rules</h2>
+                <p class="game-subtitle">8 Overs Format</p>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-users" style="margin-right: 10px; color: var(--primary);"></i>Team Composition</h3>
+                <ul>
+                    <li>10 players per team (including 2 female players) + 2 substitutes</li>
+                    <li>Each match consists of 8 overs</li>
+                    <li>Minimum 5 bowlers per team (1 female bowler mandatory)</li>
+                    <li>Maximum 2 overs per bowler</li>
+                    <li>1 over must be played by a female batter</li>
+                </ul>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-calculator" style="margin-right: 10px; color: var(--primary);"></i>Scoring</h3>
+                <ul>
+                    <li>Runs scored by running between wickets</li>
+                    <li>Boundary: 4 runs (hitting ground first) or 6 runs (direct)</li>
+                    <li>Additional runs: Wide-ball, No-ball, Byes, Overthrows</li>
+                </ul>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-times-circle" style="margin-right: 10px; color: var(--primary);"></i>Valid Dismissals</h3>
+                <ul>
+                    <li>Bowled: Ball hits stumps, dislodging bails</li>
+                    <li>Caught: Fielder catches ball before it touches ground or walls</li>
+                    <li>Run Out: Fielder hits stumps while batsman is out of crease during run</li>
+                    <li>Stumped: Wicketkeeper puts down stumps while batsman is out of crease (not attempting run)</li>
+                    <li>Hit Wicket: Batsman dislodges bails with bat/body during shot or run</li>
+                    <li>Mankading: After warning, non-striker leaves crease before delivery</li>
+                </ul>
+            </div>
+            <div class="rule-highlight">
+                <p><strong>Tournament-Specific Rules:</strong></p>
+                <ul>
+                    <li>No LBW dismissals</li>
+                    <li>No Leg Byes allowed</li>
+                    <li>Byes and Overthrows count</li>
+                    <li>Wides: Ball passing outside wide marker</li>
+                    <li>No Ball: Above waist-height full toss</li>
+                    <li>Bouncers: One per over allowed (shoulder to head height)</li>
+                    <li>Free Hit awarded after any No Ball</li>
+                    <li>Plastic stumps: Valid dismissal if any part of frame is hit</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="chessModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title"><span class="game-icon"><i class="fas fa-chess"></i></span>Chess - Official Rules</h2>
+                <p class="game-subtitle">The ultimate battle of minds requiring strategic thinking and foresight</p>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-chess-board" style="margin-right: 10px; color: var(--primary);"></i>Format</h3>
+                <ul>
+                    <li>5 players per team (predetermined board order)</li>
+                    <li>5 minutes per player (10 minutes total per match)</li>
+                    <li>Each win = 1 point; 3+ points to win match</li>
+                </ul>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-exclamation-triangle" style="margin-right: 10px; color: var(--primary);"></i>Special Rules</h3>
+                <ul>
+                    <li>If tied 2.5-2.5: Armageddon tiebreaker (White: 5 min, Black: 4 min; Black wins on draw)</li>
+                    <li>No draw by repetition</li>
+                    <li>Illegal moves: 10-second penalty to opponent</li>
+                    <li>Pressing clock without moving: Two warnings, then 20-second penalty</li>
+                    <li>Touch-and-move forgiven twice per player, enforced thereafter</li>
+                </ul>
+            </div>
+            <div class="rule-highlight">
+                <p><strong>Standard Rules Apply:</strong></p>
+                <ul>
+                    <li>En Passant allowed</li>
+                    <li>Normal castling restrictions apply</li>
+                    <li>King must be touched first when castling</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="poolModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title"><span class="game-icon"><i class="fas fa-circle"></i></span>Pool (8-Ball) - Official Rules</h2>
+                <p class="game-subtitle">A game of precision, strategy, and steady hands</p>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-play-circle" style="margin-right: 10px; color: var(--primary);"></i>Basic Play</h3>
+                <ul>
+                    <li>Standard 8-Ball rules with teams lagging for first break</li>
+                    <li>Legal break: Hit lead ball first and either pocket a ball or drive four balls to rails</li>
+                    <li>Table open after break until a player legally pockets a ball</li>
+                    <li>Players must hit their group balls (stripes/solids) first</li>
+                    <li>Turn passes if no ball pocketed</li>
+                    <li>8-ball must be pocketed in called pocket to win</li>
+                    <li>One foot must remain on floor during shot</li>
+                    <li>45-second time limit per shot</li>
+                </ul>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-ban" style="margin-right: 10px; color: var(--primary);"></i>Fouls (Result in Ball-in-Hand)</h3>
+                <ul>
+                    <li>Missing all balls with cue ball</li>
+                    <li>Hitting opponent's balls first</li>
+                    <li>Scratching (pocketing cue ball)</li>
+                    <li>Driving any ball off table</li>
+                    <li>No rail contact after hitting object ball</li>
+                    <li>Double hitting/pushing cue ball</li>
+                    <li>Illegal jump shots (no scooping)</li>
+                </ul>
+            </div>
+            <div class="rule-highlight">
+                <p><strong>Tournament Format:</strong> Singles, Mixed Doubles, Doubles</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="tabletennisModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title"><span class="game-icon"><i class="fas fa-table-tennis"></i></span>Table Tennis - Official Rules</h2>
+                <p class="game-subtitle">Lightning-quick reflexes and precision are key in this exciting indoor sport</p>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-list-ol" style="margin-right: 10px; color: var(--primary);"></i>Format</h3>
+                <ul>
+                    <li>5 formats: 2 men's singles, 1 women's singles, 1 men's doubles, 1 mixed doubles</li>
+                    <li>Each format: Best of 3 sets to 11 points (win by 2 in deuce)</li>
+                    <li>Team must win 3 of 5 formats to advance</li>
+                </ul>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-gavel" style="margin-right: 10px; color: var(--primary);"></i>Key Rules</h3>
+                <ul>
+                    <li>Serve alternates every 2 points (every 1 point at 10-10)</li>
+                    <li>Servers must toss ball 6" up from open palm</li>
+                    <li>Net serve is redone ("let")</li>
+                    <li>Partners must alternate hits in doubles</li>
+                    <li>No volleys (must let ball bounce)</li>
+                    <li>Top edge hits are in; side edges are out</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="unoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title"><span class="game-icon"><i class="fas fa-clone"></i></span>UNO - Official Rules</h2>
+                <p class="game-subtitle">Fast-paced card game of matching colors and numbers that's fun for everyone</p>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-list-ul" style="margin-right: 10px; color: var(--primary);"></i>Basic Rules</h3>
+                <ul>
+                    <li>5 players per team</li>
+                    <li>Deal 7 cards to each player</li>
+                    <li>Play cards matching color/number/symbol of top discard card</li>
+                    <li>Special cards: Skip, Reverse, Draw Two, Draw Four, Wild</li>
+                    <li>Can't play +2 on +4 or vice versa</li>
+                    <li>Must call "UNO" with one card remaining</li>
+                    <li>No special cards allowed for last card</li>
+                    <li>First 3 players to clear all cards wins for their team</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="volleyballModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title"><span class="game-icon"><i class="fas fa-volleyball-ball"></i></span>Volleyball - Official Rules</h2>
+                <p class="game-subtitle">Exciting team sport that combines agility, coordination, and teamwork</p>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-list-ol" style="margin-right: 10px; color: var(--primary);"></i>Format</h3>
+                <ul>
+                    <li>6 players on court, 2 reserves</li>
+                    <li>Best of 3 sets to 25 points (win by 2)</li>
+                </ul>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-gavel" style="margin-right: 10px; color: var(--primary);"></i>Key Rules</h3>
+                <ul>
+                    <li>Maximum 3 hits per side</li>
+                    <li>Cannot hit ball twice in succession (blocks don't count as hits)</li>
+                    <li>No touching net during play</li>
+                    <li>Ball on line is "in"</li>
+                    <li>No player can serve consecutive turnovers</li>
+                    <li>No rotation required</li>
+                    <li>Standard volleyball rules otherwise apply</li>
+                </ul>
+            </div>
+            <div class="rule-highlight">
+                <p><strong>Note:</strong> Organizers'/referee's decision will be final for all games.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="badmintonModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title"><span class="game-icon"><i class="fas fa-feather-alt"></i></span>Badminton - Official Rules</h2>
+                <p class="game-subtitle">Fast-paced racquet sport that tests reflexes and agility</p>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-list-ol" style="margin-right: 10px; color: var(--primary);"></i>Format</h3>
+                <ul>
+                    <li>5 matches total: 2 men's singles, 1 women's singles, 1 men's doubles, 1 mixed doubles</li>
+                    <li>Each match: Best of 3 sets, 11 points per set (win by 2 in deuce)</li>
+                    <li>Team must win 3 of 5 matches to win</li>
+                    <li>Player lineup must be submitted in advance and cannot be changed</li>
+                    <li>Default win if opponent lacks required players</li>
+                </ul>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-gavel" style="margin-right: 10px; color: var(--primary);"></i>Key Rules</h3>
+                <ul>
+                    <li>Diagonal underarm serves only (below waist)</li>
+                    <li>Singles: Use inside sidelines and back boundary lines</li>
+                    <li>Doubles: Inner boundary for serves, full court after return</li>
+                    <li>Serve from right court on even scores, left on odd scores</li>
+                    <li>On-line shots are considered IN</li>
+                    <li>Standard badminton rules apply for all other aspects</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="footballModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title"><span class="game-icon"><i class="fas fa-futbol"></i></span>Football (7v7) - Official Rules</h2>
+                <p class="game-subtitle">The beautiful game that combines athleticism and team strategy</p>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-list-ul" style="margin-right: 10px; color: var(--primary);"></i>Basic Rules</h3>
+                <ul>
+                    <li>7 players per team (including goalkeeper), 2 rolling substitutes allowed</li>
+                    <li>15-minute halves with 5-minute break</li>
+                    <li>Kick-ins instead of throw-ins (opponents must be 3m away)</li>
+                    <li>No offside rule</li>
+                    <li>All free kicks direct unless back-pass to keeper</li>
+                    <li>Standard rules for fouls and misconduct</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="pickleballModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title"><span class="game-icon"><i class="fas fa-table-tennis"></i></span>Pickleball - Official Rules</h2>
+                <p class="game-subtitle">Our exciting new addition combining elements of tennis, badminton, and ping-pong</p>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-list-ol" style="margin-right: 10px; color: var(--primary);"></i>Format</h3>
+                <ul>
+                    <li>Each match includes singles, mixed doubles, and men's doubles</li>
+                    <li>Teams need minimum 4 players (at least 1 female)</li>
+                    <li>Sets to 11 points, win by 2 (best of 3 sets)</li>
+                    <li>Win 2 of 3 games to win match</li>
+                </ul>
+            </div>
+            <div class="rule-section">
+                <h3><i class="fas fa-gavel" style="margin-right: 10px; color: var(--primary);"></i>Key Rules</h3>
+                <ul>
+                    <li>Diagonal underhand serves only</li>
+                    <li>Double bounce rule: First returns from each side must bounce</li>
+                    <li>No volleying in non-volley zone (kitchen)</li>
+                    <li>Only serving team scores points</li>
+                    <li>First serve of each side-out from right-hand court</li>
+                    <li>Players serve entire turn from alternating sides</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo" style="display: inline-block; background-color: white; border-radius: 10px; padding: 10px; margin-bottom: 2rem;">
+                    <img src="./images/Q-icon.png" alt="Quantium Logo" style="height: 60px; filter: none; opacity: 1;" />
+                </div>
+                <p>Get ready for fun, friendship, and fair play!</p>
+                <p>Mini QPL 2025 | Building connections through competition</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-slack"></i></a>
+                    <a href="#"><i class="far fa-envelope"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Quantium. All rights reserved.</p>
+                    <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.7;">Website designed with ♡ by <a href="https://quantium.slack.com/team/U02J9DYD8P5" target="_blank" style="color: white; text-decoration: underline;">Krishna Kanth</a>, with assistance from Claude</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple script to update the countdown based on current date
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date();
+            
+            // Event dates
+            const events = [
+                { name: "Carroms", date: new Date(2025, 2, 26) }, // March 26
+                { name: "Cricket", date: new Date(2025, 2, 27) }, // March 27
+                { name: "Pool", date: new Date(2025, 3, 2) },     // April 2
+                { name: "Pickleball", date: new Date(2025, 3, 29) }, // April 29 (updated)
+                { name: "Table Tennis", date: new Date(2025, 3, 8) }, // April 8
+                { name: "Volleyball", date: new Date(2025, 3, 10) }, // April 10
+                { name: "UNO", date: new Date(2025, 3, 15) },     // April 15
+                { name: "Badminton", date: new Date(2025, 3, 17) }, // April 17
+                { name: "Football", date: new Date(2025, 3, 22) }, // April 22
+                { name: "Chess", date: new Date(2025, 3, 16) }    // April 16 (updated)
+            ];
+            
+            // Find the next upcoming event
+            let nextEvent = null;
+            for (const event of events) {
+                if (event.date > today) {
+                    nextEvent = event;
+                    break;
+                }
+            }
+            
+            // Update the countdown
+            if (nextEvent) {
+                document.getElementById('nextEventName').textContent = nextEvent.name;
+                
+                const options = { month: 'long', day: 'numeric' };
+                const formattedDate = nextEvent.date.toLocaleDateString('en-US', options);
+                document.getElementById('nextEventDate').textContent = formattedDate;
+            } else {
+                document.querySelector('.hero-countdown').textContent = "All events completed!";
+            }
+        });
+        
+        // Add chart for visualizing team performances
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Highlight active navigation link on scroll
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Game details modal functionality
+            const gameDetailsButtons = document.querySelectorAll('.game-details-btn');
+            const modals = document.querySelectorAll('.modal');
+            const closeButtons = document.querySelectorAll('.close');
+            
+            // Open modal when clicking Game Details button
+            gameDetailsButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const game = this.getAttribute('data-game');
+                    const modal = document.getElementById(game + 'Modal');
+                    if (modal) {
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+                    }
+                });
+            });
+            
+            // Close modal when clicking close button
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    modal.style.display = 'none';
+                    document.body.style.overflow = ''; // Restore scrolling
+                });
+            });
+            
+            // Close modal when clicking outside of modal content
+            window.addEventListener('click', function(event) {
+                modals.forEach(modal => {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = ''; // Restore scrolling
+                    }
+                });
+            });
+            
+            // Close modal when pressing Escape key
+            window.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    modals.forEach(modal => {
+                        if (modal.style.display === 'block') {
+                            modal.style.display = 'none';
+                            document.body.style.overflow = ''; // Restore scrolling
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
