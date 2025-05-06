@@ -730,6 +730,416 @@
             }
         }
         
+        /* CEREMONY MODAL STYLES */
+        .ceremony-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.85);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .ceremony-modal.show {
+            opacity: 1;
+        }
+        
+        .ceremony-content {
+            background: linear-gradient(135deg, #001428, #002952);
+            margin: 3% auto;
+            padding: 30px;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 15px;
+            box-shadow: 0 10px 50px rgba(0, 163, 224, 0.5);
+            position: relative;
+            color: white;
+            text-align: center;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.8s ease;
+            overflow: hidden;
+        }
+        
+        .ceremony-modal.show .ceremony-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .ceremony-close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: #aaa;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .ceremony-close:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .ceremony-header {
+            margin-bottom: 30px;
+        }
+        
+        .ceremony-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #FFB81C;
+            text-shadow: 0 0 10px rgba(255, 184, 28, 0.5);
+        }
+        
+        .ceremony-body {
+            position: relative;
+            min-height: 400px;
+        }
+        
+        /* TROPHY STYLES */
+        .trophy-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+            opacity: 0;
+        }
+        
+        .trophy-container.show {
+            transform: translateX(-50%) scale(1);
+            opacity: 1;
+        }
+        
+        .trophy {
+            position: relative;
+            text-align: center;
+        }
+        
+        .trophy-cup {
+            width: 100px;
+            height: 120px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            position: relative;
+            border-radius: 50px 50px 0 0;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+        }
+        
+        .trophy-cup::before,
+        .trophy-cup::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 50px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 40px 40px 0 0;
+        }
+        
+        .trophy-cup::before {
+            left: -25px;
+            top: 30px;
+            transform: rotate(-30deg);
+        }
+        
+        .trophy-cup::after {
+            right: -25px;
+            top: 30px;
+            transform: rotate(30deg);
+        }
+        
+        .trophy-base {
+            width: 70px;
+            height: 15px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            position: relative;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .trophy-base::after {
+            content: '';
+            position: absolute;
+            width: 90px;
+            height: 25px;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .champion-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 40px;
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 1s;
+        }
+        
+        .trophy-container.show .champion-name {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* PODIUM STYLES */
+        .podium-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-top: 300px;
+            margin-bottom: 50px;
+        }
+        
+        .podium-spot {
+            position: relative;
+            text-align: center;
+            margin: 0 15px;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .podium-spot.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .team-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: white;
+            margin: 0 auto 15px;
+            position: relative;
+            z-index: 2;
+            border: 3px solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .team-avatar.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .team-avatar.small {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .team-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .team-avatar.small .team-logo {
+            font-size: 1.3rem;
+        }
+        
+        #first-place .team-avatar {
+            border-color: #FFD700;
+        }
+        
+        #second-place .team-avatar {
+            border-color: #C0C0C0;
+        }
+        
+        #third-place .team-avatar {
+            border-color: #CD7F32;
+        }
+        
+        .team-reveal {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.2s;
+        }
+        
+        .team-reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .team-score {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.4s;
+        }
+        
+        .team-score.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .podium {
+            width: 100px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.5);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .podium.show {
+            transform: scaleY(1);
+        }
+        
+        #first-place .podium {
+            height: 180px;
+            background: linear-gradient(to top, #FFD700, #FFC700);
+            box-shadow: 0 -5px 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        #second-place .podium {
+            height: 120px;
+            background: linear-gradient(to top, #C0C0C0, #E0E0E0);
+            box-shadow: 0 -5px 15px rgba(192, 192, 192, 0.3);
+        }
+        
+        #third-place .podium {
+            height: 80px;
+            background: linear-gradient(to top, #CD7F32, #E69849);
+            box-shadow: 0 -5px 15px rgba(205, 127, 50, 0.3);
+        }
+        
+        /* 4th and 5th places */
+        .runners-up {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 30px;
+        }
+        
+        .position {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.3s;
+        }
+        
+        .position.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Controls */
+        .ceremony-controls {
+            margin-top: 40px;
+        }
+        
+        .ceremony-controls .btn {
+            margin: 0 10px;
+            min-width: 180px;
+            transition: all 0.3s;
+        }
+        
+        /* Confetti effect */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f2d74e;
+            opacity: 0.8;
+            animation: confetti-fall linear forwards;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .ceremony-footer {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .ceremony-content {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .ceremony-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .podium-container {
+                padding-top: 250px;
+            }
+            
+            .podium {
+                width: 70px;
+            }
+            
+            #first-place .podium {
+                height: 140px;
+            }
+            
+            #second-place .podium {
+                height: 100px;
+            }
+            
+            #third-place .podium {
+                height: 70px;
+            }
+            
+            .runners-up {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
         /* ORGANIZERS SECTION */
         .organizers-grid {
             display: grid;
@@ -1092,6 +1502,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <!-- Audio elements for ceremony -->
+    <audio id="ceremony-music" preload="auto">
+        <source src="./images/Ceremony Music.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="champion-sound" preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2010/2010-preview.mp3" type="audio/mpeg">
+    </audio>
     <header>
         <div class="container">
             <div class="logo">
@@ -1101,6 +1518,11 @@
             <p>10 action-packed games building bonds and creating unforgettable memories</p>
             <div class="hero-countdown">
                 All events completed! Final standings available in the leaderboard section.
+                <div style="margin-top: 15px;">
+                    <button id="open-ceremony" class="btn" style="background-color: #FFB81C; font-size: 1.1rem; padding: 12px 24px; border-radius: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); animation: pulse 2s infinite; border: 2px solid white;">
+                        <i class="fas fa-trophy" style="margin-right: 10px;"></i>Reveal Winners Ceremony
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -1448,8 +1870,8 @@
                 </tbody>
             </table>
             
-            <div class="text-center">
-                <a href="#" class="btn">Download Schedule</a>
+            <div class="text-center" style="margin-top: 30px;">
+                <a href="#leaderboard" class="btn">View Final Standings</a>
             </div>
         </div>
     </section>
@@ -1912,7 +2334,7 @@
                     <p>The final event of Mini QPL 2025 wrapped up yesterday with an exciting Pickleball tournament. Team Remarkable claimed the championship with an outstanding performance, securing 50 points and cementing their second place position in the overall standings.</p>
                     
                     <div style="display: flex; justify-content: center; margin: 20px 0;">
-                        <img src="./images/Pickle Ball_Superpowers.jpeg" alt="Pickleball Tournament" style="max-width: 100%; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);" />
+                        <img src="./images/Team Quantium1.jpeg" alt="Pickleball Tournament" style="max-width: 100%; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);" />
                     </div>
                     
                     <div class="match-results" style="background-color: #f0f9f0; border-left: 4px solid #4CAF50;">
@@ -2411,6 +2833,242 @@
             document.head.appendChild(style);
         });
         
+        // Ceremony Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('ceremony-modal');
+            const openBtn = document.getElementById('open-ceremony');
+            const closeBtn = document.querySelector('.ceremony-close');
+            const startBtn = document.getElementById('start-reveal');
+            const resetBtn = document.getElementById('reset-ceremony');
+            
+            // Elements for animation
+            const trophyContainer = document.querySelector('.trophy-container');
+            const podiumSpots = document.querySelectorAll('.podium-spot');
+            const podiums = document.querySelectorAll('.podium');
+            const teamAvatars = document.querySelectorAll('.team-avatar');
+            const teamReveals = document.querySelectorAll('.team-reveal');
+            const teamScores = document.querySelectorAll('.team-score');
+            const positions = document.querySelectorAll('.position');
+            
+            // Get audio elements
+            const ceremonyMusic = document.getElementById('ceremony-music');
+            ceremonyMusic.volume = 0.5; // Set volume to 50%
+            const championSound = document.getElementById('champion-sound');
+            championSound.volume = 0.6; // Set volume to 60%
+            
+            // Open modal
+            openBtn.addEventListener('click', function() {
+                modal.style.display = 'block';
+                // Small delay before adding the show class for transition effect
+                setTimeout(function() {
+                    modal.classList.add('show');
+                }, 50);
+            });
+            
+            // Close modal
+            closeBtn.addEventListener('click', function() {
+                modal.classList.remove('show');
+                // Pause the music
+                ceremonyMusic.pause();
+                setTimeout(function() {
+                    modal.style.display = 'none';
+                    resetAnimation();
+                }, 500);
+            });
+            
+            // Click outside to close
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.classList.remove('show');
+                    // Pause the music
+                    ceremonyMusic.pause();
+                    setTimeout(function() {
+                        modal.style.display = 'none';
+                        resetAnimation();
+                    }, 500);
+                }
+            });
+            
+            // Start the reveal animation
+            startBtn.addEventListener('click', function() {
+                startBtn.disabled = true;
+                // Play the music
+                ceremonyMusic.currentTime = 0; // Reset to beginning
+                ceremonyMusic.play();
+                startAnimation();
+            });
+            
+            // Reset the animation
+            resetBtn.addEventListener('click', function() {
+                // Pause the music
+                ceremonyMusic.pause();
+                resetAnimation();
+                startBtn.disabled = false;
+                startBtn.style.display = 'inline-block';
+                resetBtn.style.display = 'none';
+            });
+            
+            function startAnimation() {
+                // Animate 5th place first
+                setTimeout(function() {
+                    podiumSpots[4].classList.add('show');
+                    setTimeout(function() {
+                        positions[1].classList.add('show');
+                        teamAvatars[4].classList.add('show');
+                        setTimeout(function() {
+                            teamReveals[4].classList.add('show');
+                            teamScores[4].classList.add('show');
+                        }, 500);
+                    }, 300);
+                }, 500);
+                
+                // Animate 4th place
+                setTimeout(function() {
+                    podiumSpots[3].classList.add('show');
+                    setTimeout(function() {
+                        positions[0].classList.add('show');
+                        teamAvatars[3].classList.add('show');
+                        setTimeout(function() {
+                            teamReveals[3].classList.add('show');
+                            teamScores[3].classList.add('show');
+                        }, 500);
+                    }, 300);
+                }, 2000);
+                
+                // Animate 3rd place
+                setTimeout(function() {
+                    podiumSpots[2].classList.add('show');
+                    setTimeout(function() {
+                        podiums[2].classList.add('show');
+                        setTimeout(function() {
+                            teamAvatars[2].classList.add('show');
+                            setTimeout(function() {
+                                teamReveals[2].classList.add('show');
+                                teamScores[2].classList.add('show');
+                            }, 500);
+                        }, 800);
+                    }, 300);
+                }, 3500);
+                
+                // Animate 2nd place
+                setTimeout(function() {
+                    podiumSpots[0].classList.add('show');
+                    setTimeout(function() {
+                        podiums[0].classList.add('show');
+                        setTimeout(function() {
+                            teamAvatars[0].classList.add('show');
+                            setTimeout(function() {
+                                teamReveals[0].classList.add('show');
+                                teamScores[0].classList.add('show');
+                            }, 500);
+                        }, 800);
+                    }, 300);
+                }, 5000);
+                
+                // Animate 1st place and trophy
+                setTimeout(function() {
+                    podiumSpots[1].classList.add('show');
+                    setTimeout(function() {
+                        podiums[1].classList.add('show');
+                        setTimeout(function() {
+                            teamAvatars[1].classList.add('show');
+                            setTimeout(function() {
+                                teamReveals[1].classList.add('show');
+                                teamScores[1].classList.add('show');
+                                
+                                // Show trophy and create confetti
+                                setTimeout(function() {
+                                    trophyContainer.classList.add('show');
+                                    // Play champion sound
+                                    championSound.currentTime = 0;
+                                    championSound.play();
+                                    createConfetti();
+                                    
+                                    // Show reset button
+                                    setTimeout(function() {
+                                        startBtn.style.display = 'none';
+                                        resetBtn.style.display = 'inline-block';
+                                    }, 2000);
+                                }, 1500);
+                            }, 500);
+                        }, 800);
+                    }, 300);
+                }, 6500);
+            }
+            
+            function resetAnimation() {
+                // Reset all animation classes
+                trophyContainer.classList.remove('show');
+                
+                podiumSpots.forEach(function(spot) {
+                    spot.classList.remove('show');
+                });
+                
+                podiums.forEach(function(podium) {
+                    podium.classList.remove('show');
+                });
+                
+                teamAvatars.forEach(function(avatar) {
+                    avatar.classList.remove('show');
+                });
+                
+                teamReveals.forEach(function(reveal) {
+                    reveal.classList.remove('show');
+                });
+                
+                teamScores.forEach(function(score) {
+                    score.classList.remove('show');
+                });
+                
+                positions.forEach(function(position) {
+                    position.classList.remove('show');
+                });
+                
+                // Remove any confetti
+                const confetti = document.querySelectorAll('.confetti');
+                confetti.forEach(function(piece) {
+                    piece.remove();
+                });
+            }
+            
+            function createConfetti() {
+                const colors = ['#FFD700', '#C0C0C0', '#CD7F32', '#00A3E0', '#FFB81C', '#E91E63', '#673AB7'];
+                const containerRect = document.querySelector('.ceremony-content').getBoundingClientRect();
+                
+                for (let i = 0; i < 150; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    
+                    // Random position, color, and animation duration
+                    const left = Math.random() * containerRect.width;
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    const size = Math.random() * 8 + 6; // 6-14px
+                    const duration = Math.random() * 3 + 2; // 2-5s
+                    
+                    confetti.style.left = left + 'px';
+                    confetti.style.backgroundColor = color;
+                    confetti.style.width = size + 'px';
+                    confetti.style.height = size + 'px';
+                    confetti.style.opacity = Math.random() * 0.6 + 0.4; // 0.4-1
+                    confetti.style.animationDuration = duration + 's';
+                    
+                    // Random shape
+                    if (Math.random() > 0.6) {
+                        confetti.style.borderRadius = '50%';
+                    } else if (Math.random() > 0.5) {
+                        confetti.style.transform = 'rotate(45deg)';
+                    }
+                    
+                    document.querySelector('.ceremony-content').appendChild(confetti);
+                    
+                    // Remove confetti after animation completes
+                    setTimeout(function() {
+                        confetti.remove();
+                    }, duration * 1000);
+                }
+            }
+        });
+        
         // Add chart for visualizing team performances
         document.addEventListener('DOMContentLoaded', () => {
             // Smooth scrolling for navigation links
@@ -2504,5 +3162,169 @@
             });
         });
     </script>
+    
+    <!-- Winner Reveal Ceremony Modal -->
+    <div id="ceremony-modal" class="ceremony-modal">
+        <div class="ceremony-content">
+            <span class="ceremony-close">&times;</span>
+            
+            <div class="ceremony-header">
+                <h2>Mini QPL 2025 Champions</h2>
+                <p>The moment we've all been waiting for...</p>
+            </div>
+            
+            <div class="ceremony-body">
+                <!-- Trophy animation -->
+                <div class="trophy-container">
+                    <div class="trophy">
+                        <div class="trophy-cup"></div>
+                        <div class="trophy-base"></div>
+                        <div class="champion-name">Team Impact</div>
+                    </div>
+                </div>
+                
+                <!-- Podium animation -->
+                <div class="podium-container">
+                    <div class="podium-spot" id="second-place">
+                        <div class="team-avatar">
+                            <div class="team-logo">R</div>
+                        </div>
+                        <div class="team-reveal">Team Remarkable</div>
+                        <div class="team-score">330 pts</div>
+                        <div class="podium">2</div>
+                    </div>
+                    
+                    <div class="podium-spot" id="first-place">
+                        <div class="team-avatar">
+                            <div class="team-logo">I</div>
+                        </div>
+                        <div class="team-reveal">Team Impact</div>
+                        <div class="team-score">360 pts</div>
+                        <div class="podium">1</div>
+                    </div>
+                    
+                    <div class="podium-spot" id="third-place">
+                        <div class="team-avatar">
+                            <div class="team-logo">S</div>
+                        </div>
+                        <div class="team-reveal">Team Superpowers</div>
+                        <div class="team-score">280 pts</div>
+                        <div class="podium">3</div>
+                    </div>
+                </div>
+                
+                <div class="runners-up">
+                    <div class="podium-spot small" id="fourth-place">
+                        <div class="team-avatar small">
+                            <div class="team-logo">Sp</div>
+                        </div>
+                        <div class="team-reveal">Team Speed</div>
+                        <div class="team-score">270 pts</div>
+                        <div class="position">4th</div>
+                    </div>
+                    
+                    <div class="podium-spot small" id="fifth-place">
+                        <div class="team-avatar small">
+                            <div class="team-logo">B</div>
+                        </div>
+                        <div class="team-reveal">Team Balance</div>
+                        <div class="team-score">260 pts</div>
+                        <div class="position">5th</div>
+                    </div>
+                </div>
+                
+                <div class="ceremony-controls">
+                    <button id="start-reveal" class="btn">Begin Ceremony</button>
+                    <button id="reset-ceremony" class="btn" style="display: none;">Reset Animation</button>
+                </div>
+            </div>
+            
+            <div class="ceremony-footer">
+                <p>Congratulations to all teams for their participation and sportsmanship!</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Ceremony Audio Control
+        document.addEventListener('DOMContentLoaded', function() {
+            const ceremonyMusic = document.getElementById('ceremony-music');
+            const championSound = document.getElementById('champion-sound');
+            const startRevealBtn = document.getElementById('start-reveal');
+            const resetBtn = document.getElementById('reset-ceremony');
+            const openCeremonyBtn = document.getElementById('open-ceremony');
+            const closeBtn = document.querySelector('.ceremony-close');
+            const modal = document.getElementById('ceremony-modal');
+            const trophyContainer = document.querySelector('.trophy-container');
+            
+            // Ensure audio is ready to play
+            ceremonyMusic.load();
+            championSound.load();
+            
+            // Watch for the trophy animation to play the sound
+            const trophyObserver = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && 
+                        mutation.attributeName === 'class' && 
+                        trophyContainer.classList.contains('show')) {
+                        // Play the champion sound when trophy is revealed
+                        championSound.play();
+                    }
+                });
+            });
+            
+            // Start observing the trophy container for class changes
+            trophyObserver.observe(trophyContainer, { attributes: true });
+            
+            // Play music when Begin Ceremony is clicked
+            if (startRevealBtn) {
+                startRevealBtn.addEventListener('click', function() {
+                    console.log('Playing ceremony music');
+                    ceremonyMusic.currentTime = 0;
+                    ceremonyMusic.play();
+                });
+            }
+            
+            // Stop music when modal is closed
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    ceremonyMusic.pause();
+                    ceremonyMusic.currentTime = 0;
+                    championSound.pause();
+                    championSound.currentTime = 0;
+                });
+            }
+            
+            // Stop music when clicking outside modal
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    ceremonyMusic.pause();
+                    ceremonyMusic.currentTime = 0;
+                    championSound.pause();
+                    championSound.currentTime = 0;
+                }
+            });
+            
+            // Reset button should also stop music
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function() {
+                    ceremonyMusic.pause();
+                    ceremonyMusic.currentTime = 0;
+                    championSound.pause();
+                    championSound.currentTime = 0;
+                });
+            }
+        });
+    </script>
+    
+    <!-- Audio element for ceremony music -->
+    <audio id="ceremony-music" preload="auto">
+        <source src="./Ceremony Music.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Audio element for champion reveal sound effect -->
+    <audio id="champion-sound" preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2010/2010-preview.mp3" type="audio/mpeg">
+    </audio>
 </body>
 </html>
