@@ -831,64 +831,31 @@
             text-align: center;
         }
         
-        .trophy-cup {
-            width: 100px;
-            height: 120px;
+        .trophy-image {
             margin: 0 auto;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
             position: relative;
-            border-radius: 50px 50px 0 0;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.7));
         }
         
-        .trophy-cup::before,
-        .trophy-cup::after {
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 50px;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            border-radius: 40px 40px 0 0;
+        .trophy-image img {
+            transform: scale(0.9);
+            transition: transform 0.5s ease;
         }
         
-        .trophy-cup::before {
-            left: -25px;
-            top: 30px;
-            transform: rotate(-30deg);
+        .trophy-container.show .trophy-image img {
+            transform: scale(1);
+            animation: trophy-glow 2s infinite alternate;
         }
         
-        .trophy-cup::after {
-            right: -25px;
-            top: 30px;
-            transform: rotate(30deg);
-        }
-        
-        .trophy-base {
-            width: 70px;
-            height: 15px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            position: relative;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        .trophy-base::after {
-            content: '';
-            position: absolute;
-            width: 90px;
-            height: 25px;
-            bottom: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            border-radius: 5px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        @keyframes trophy-glow {
+            0% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7)); }
+            100% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9)); }
         }
         
         .champion-name {
             font-size: 1.8rem;
             font-weight: 700;
-            margin-top: 40px;
+            margin-top: 20px;
             color: #FFD700;
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
             opacity: 0;
@@ -1512,7 +1479,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="./images/Q-icon.png" alt="Quantium Logo" style="height: 60px;" />
+                <img src="./images/Q-icon.png" alt="Quantium Logo" style="height: 30px;" />
             </div>
             <h1>Mini QPL 2025</h1>
             <p>10 action-packed games building bonds and creating unforgettable memories</p>
@@ -1711,7 +1678,7 @@
                 <!-- Table Tennis -->
                 <div class="game-card">
                     <div class="game-image" style="background: linear-gradient(135deg, #2196F3, #0D47A1);">
-                        <i class="fas fa-table-tennis" style="font-size: 4rem;"></i>
+                        <img src="./images/TT.jpg" alt="Table Tennis Game">
                     </div>
                     <div class="game-details">
                         <h3 class="game-title">Table Tennis</h3>
@@ -3172,8 +3139,9 @@
                 <!-- Trophy animation -->
                 <div class="trophy-container">
                     <div class="trophy">
-                        <div class="trophy-cup"></div>
-                        <div class="trophy-base"></div>
+                        <div class="trophy-image">
+                            <img src="./images/Trophy.jpg" alt="Championship Trophy" id="trophy-img" style="width: 150px; height: auto;">
+                        </div>
                         <div class="champion-name">Team Impact</div>
                     </div>
                 </div>
